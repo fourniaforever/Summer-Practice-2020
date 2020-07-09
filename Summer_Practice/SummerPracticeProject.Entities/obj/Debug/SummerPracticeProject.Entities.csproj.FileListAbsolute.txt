@@ -1,6 +1,0 @@
-C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.Entities\bin\Debug\SummerPracticeProject.Entities.dll
-C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.Entities\bin\Debug\SummerPracticeProject.Entities.pdb
-C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.Entities\obj\Debug\SummerPracticeProject.Entities.csprojAssemblyReference.cache
-C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.Entities\obj\Debug\SummerPracticeProject.Entities.csproj.CoreCompileInputs.cache
-C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.Entities\obj\Debug\SummerPracticeProject.Entities.dll
-C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.Entities\obj\Debug\SummerPracticeProject.Entities.pdb
