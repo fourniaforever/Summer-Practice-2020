@@ -1,0 +1,11 @@
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\bin\Debug\SummerPracticeProject.DAL.dll
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\bin\Debug\SummerPracticeProject.DAL.pdb
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\bin\Debug\SummerPracticeProject.Dao.Interfaces.dll
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\bin\Debug\SummerPracticeProject.Entities.dll
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\bin\Debug\SummerPracticeProject.Dao.Interfaces.pdb
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\bin\Debug\SummerPracticeProject.Entities.pdb
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\obj\Debug\SummerPracticeProject.DAL.csprojAssemblyReference.cache
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\obj\Debug\SummerPracticeProject.DAL.csproj.CoreCompileInputs.cache
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\obj\Debug\SummerPracticeProject.DAL.csproj.CopyComplete
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\obj\Debug\SummerPracticeProject.DAL.dll
+C:\Users\fourn\OneDrive\Документы\Summer_Practice\Summer_Practice\SummerPracticeProject.DAL\obj\Debug\SummerPracticeProject.DAL.pdb
