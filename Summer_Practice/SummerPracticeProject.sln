@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerPracticeProject.DAL",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerPracticeProject.Dao.Interfaces", "SummerPracticeProject.Dao.Interfaces\SummerPracticeProject.Dao.Interfaces.csproj", "{24D6F364-EDAF-4372-925F-88C9DAEF987E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerPracticeProject.Ioc", "SummerPracticeProject.Ioc\SummerPracticeProject.Ioc.csproj", "{14C8292E-0443-41DE-8F37-3745AB57EECC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerPracticeProject.PL", "SummerPracticeProject.PL\SummerPracticeProject.PL.csproj", "{950820FF-4E38-4203-844D-80D95787D0CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{24D6F364-EDAF-4372-925F-88C9DAEF987E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24D6F364-EDAF-4372-925F-88C9DAEF987E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24D6F364-EDAF-4372-925F-88C9DAEF987E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14C8292E-0443-41DE-8F37-3745AB57EECC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C8292E-0443-41DE-8F37-3745AB57EECC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C8292E-0443-41DE-8F37-3745AB57EECC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C8292E-0443-41DE-8F37-3745AB57EECC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{950820FF-4E38-4203-844D-80D95787D0CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{950820FF-4E38-4203-844D-80D95787D0CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{950820FF-4E38-4203-844D-80D95787D0CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{950820FF-4E38-4203-844D-80D95787D0CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
