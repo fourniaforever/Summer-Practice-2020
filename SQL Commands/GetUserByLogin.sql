@@ -1,0 +1,6 @@
+CREATE PROCEDURE GetUserByLogin
+@Login NVARCHAR(50)
+AS
+BEGIN
+SELECT*FROM Users WHERE Login = @Login
+END

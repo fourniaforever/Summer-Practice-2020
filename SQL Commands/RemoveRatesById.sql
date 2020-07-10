@@ -1,0 +1,6 @@
+CREATE PROC RemoveRatesById
+ @Id INT
+ AS
+ BEGIN
+  DELETE FROM Rates WHERE Id = @Id
+ END

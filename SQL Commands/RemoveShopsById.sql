@@ -1,0 +1,6 @@
+CREATE PROC RemoveShopsById
+ @Id INT
+ AS
+ BEGIN
+  DELETE FROM Shops WHERE Id = @Id
+ END

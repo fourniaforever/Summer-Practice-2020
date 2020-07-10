@@ -1,0 +1,6 @@
+CREATE PROC GetRatesById
+	@Id INT
+AS
+BEGIN
+	SELECT*FROM Rates WHERE Id = @Id
+END

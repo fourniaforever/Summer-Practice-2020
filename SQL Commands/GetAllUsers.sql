@@ -1,0 +1,5 @@
+CREATE PROC GetAllUsers
+AS
+BEGIN
+SELECT * FROM Users
+END
