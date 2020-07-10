@@ -22,20 +22,20 @@ namespace SummerPracticeProject.BLL
         }
         public void Add(Users user)
         {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] password = Encoding.Default.GetBytes(user.Password);
-                user.Hash = sha256.ComputeHash(password);
-            }
-            _userDao.Add(user);
+            //using (SHA256 sha256 = SHA256.Create())
+            //{
+            //    byte[] password = Encoding.Default.GetBytes(user.Password);
+            //    user.Hash = sha256.ComputeHash(password);
+            //}
+            //_userDao.Add(user);
         }
         public bool Authentication(Users user)
         {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] password = Encoding.Default.GetBytes(user.Password);
-                user.Hash = sha256.ComputeHash(password);
-            }
+            //using (SHA256 sha256 = SHA256.Create())
+            //{
+            //    byte[] password = Encoding.Default.GetBytes(user.Password);
+            //    user.Hash = sha256.ComputeHash(password);
+            //}
             return _userDao.Authentication(user);
         }
     }

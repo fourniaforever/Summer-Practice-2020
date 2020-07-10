@@ -44,13 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="DependencyResolver.cs" />
     <Compile Include="NinjectBindings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SummerPracticeProject.BLL.Interfaces\SummerPracticeProject.BLL.Interfaces.csproj">
@@ -73,6 +69,9 @@
       <Project>{32933068-2876-4317-9d25-423ed086a803}</Project>
       <Name>SummerPracticeProject.Entities</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

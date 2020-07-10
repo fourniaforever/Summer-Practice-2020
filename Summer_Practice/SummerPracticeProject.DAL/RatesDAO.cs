@@ -10,9 +10,8 @@ using SummerPracticeProject.Entities;
 
 namespace SummerPracticeProject.DAL
 {
-    public class RatesDAO: IRatesDao
+    public class RatesDAO: TemplateDAO,IRatesDao
     {
-        private string _connectionString = @"";
         private static Dictionary<int,Rates> _rates = new Dictionary<int,Rates>();
         public void Add(Rates r)
         {
@@ -20,55 +19,12 @@ namespace SummerPracticeProject.DAL
             r.Id = lastKey + 1;
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "dbo.AddRate";
-
-                var idParameter = new SqlParameter()
-                {
-                    DbType = DbType.Int32,
-                    ParameterName = "@Id",
-                    Value = r.Id,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(idParameter);
-
-                var idShopParameter = new SqlParameter()
-                {
-                    DbType = DbType.Int32,
-                    ParameterName = "@IdShop",
-                    Value = r.IdShop,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(idShopParameter);
-
-                var dateParameter = new SqlParameter()
-                {
-                    DbType = DbType.DateTime,
-                    ParameterName = "@Date",
-                    Value = r.Date,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(dateParameter);
-
-                var rateParameter = new SqlParameter()
-                {
-                    DbType = DbType.Int32,
-                    ParameterName = "@Rate",
-                    Value = r.Rate,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(rateParameter);
-
-                var rateByParameter = new SqlParameter()
-                {
-                    DbType = DbType.Int32,
-                    ParameterName = "@RateBy",
-                    Value = r.RateBy,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(rateByParameter);
-
+                SqlCommand command = GetSqlCommand(connection, "dbo.AddRates");
+                AddSqlParameter(GetSqlParameter("Id", r.Id, DbType.Int32), command);
+                AddSqlParameter(GetSqlParameter("IdShop", r.IdShop, DbType.Int32), command);
+                AddSqlParameter(GetSqlParameter("Date", r.Date, DbType.DateTime), command);
+                AddSqlParameter(GetSqlParameter("Rate", r.Rate, DbType.Int32), command);
+                AddSqlParameter(GetSqlParameter("RateBy", r.RateBy, DbType.Int32), command);
                 connection.Open();
                 var reader = command.ExecuteReader();
             }
@@ -77,19 +33,8 @@ namespace SummerPracticeProject.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "dbo.RemoveRatesById";
-
-                var idParameter = new SqlParameter()
-                {
-                    DbType = DbType.Int32,
-                    ParameterName = "@Id",
-                    Value = id,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(idParameter);
-
+                SqlCommand command = GetSqlCommand(connection, "dbo.RemoveRate");
+                AddSqlParameter(GetSqlParameter("Id", id, DbType.Int32), command);
                 connection.Open();
                 var reader = command.ExecuteReader();
             }
@@ -99,18 +44,8 @@ namespace SummerPracticeProject.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "dbo.GetRatesById";
-
-                var idParameter = new SqlParameter()
-                {
-                    DbType = DbType.Int32,
-                    ParameterName = "@Id",
-                    Value = id,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(idParameter);
+                SqlCommand command = GetSqlCommand(connection, "dbo.GetRatesById");
+                AddSqlParameter(GetSqlParameter("Id", id, DbType.Int32), command);
 
                 connection.Open();
                 var reader = command.ExecuteReader();
@@ -131,8 +66,10 @@ namespace SummerPracticeProject.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                SqlCommand cmd = new SqlCommand("GetAllRates", connection);  //SQL-команда
-                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlCommand cmd = new SqlCommand("GetAllRates", connection)
+                {
+                    CommandType = System.Data.CommandType.StoredProcedure
+                };  //SQL-команда
 
                 connection.Open();
                 var reader = cmd.ExecuteReader();

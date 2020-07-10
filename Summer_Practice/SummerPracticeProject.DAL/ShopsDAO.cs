@@ -10,9 +10,8 @@ using System.Data.SqlClient;
 
 namespace SummerPracticeProject.DAL
 {
-    public class ShopsDAO :IShopsDao
+    public class ShopsDAO : TemplateDAO,IShopsDao
     {
-        private string _connectionString = @"";
         private static Dictionary<int, Shops> _shops= new Dictionary<int, Shops>();
         public void Add(Shops s)
         {
@@ -20,56 +19,20 @@ namespace SummerPracticeProject.DAL
             s.Id = lastKey + 1;
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "dbo.AddShop";
-
-                var idParameter = new SqlParameter()
-                {
-                    DbType = DbType.Int32,
-                    ParameterName = "@Id",
-                    Value = s.Id,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(idParameter);
-
-                var nameParameter = new SqlParameter()
-                {
-                    DbType = DbType.String,
-                    ParameterName = "@Name",
-                    Value = s.Name,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(nameParameter);
-
-                var addressParameter = new SqlParameter()
-                {
-                    DbType = DbType.String,
-                    ParameterName = "@Address",
-                    Value = s.Address,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(addressParameter);
+                SqlCommand command = GetSqlCommand(connection, "dbo.AddShop");
+                AddSqlParameter(GetSqlParameter("Id", s.Id, DbType.Int32), command);
+                AddSqlParameter(GetSqlParameter("Name", s.Name, DbType.String), command);
+                AddSqlParameter(GetSqlParameter("Address", s.Address, DbType.String), command);
                 connection.Open();
-                var reader = command.ExecuteReader();
+                command.ExecuteNonQuery();
             }
         }
         public void Remove(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "dbo.RemoveShopsById";
-
-                var idParameter = new SqlParameter()
-                {
-                    DbType = DbType.Int32,
-                    ParameterName = "@Id",
-                    Value = id,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(idParameter);
+                SqlCommand command = GetSqlCommand(connection, "dbo.RemoveUser");
+                AddSqlParameter(GetSqlParameter("Id", id, DbType.Int32), command);
 
                 connection.Open();
                 var reader = command.ExecuteReader();
@@ -80,18 +43,8 @@ namespace SummerPracticeProject.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "dbo.GetShopsById";
-
-                var idParameter = new SqlParameter()
-                {
-                    DbType = DbType.Int32,
-                    ParameterName = "@Id",
-                    Value = id,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(idParameter);
+                SqlCommand command = GetSqlCommand(connection, "dbo.GetShopsById");
+                AddSqlParameter(GetSqlParameter("Id", id, DbType.Int32), command);
 
                 connection.Open();
                 var reader = command.ExecuteReader();
@@ -129,13 +82,13 @@ namespace SummerPracticeProject.DAL
 
         }
 
-        public IEnumerable<string> SelectShopsByRate(int id)
+        public IEnumerable<string> SelectShopsByRate(int rate)
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 SqlCommand cmd = new SqlCommand("SelectShopsByRate", connection);  //SQL-команда
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@idCountry", id);
+                cmd.Parameters.AddWithValue("@rate", rate);
                 connection.Open();
                 var reader = cmd.ExecuteReader();
                 List<string> Dishes = new List<string>();

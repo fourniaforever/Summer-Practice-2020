@@ -11,9 +11,8 @@ using SummerPracticeProject.Entities;
 
 namespace SummerPracticeProject.DAL
 {
-    public class UsersDAO: IUsersDao
+    public class UsersDAO: TemplateDAO,IUsersDao
     {
-        private string _connectionString = "";
         private static Dictionary<int, Users> _users = new Dictionary<int, Users>();
         public void Add(Users users)
         {
@@ -21,39 +20,16 @@ namespace SummerPracticeProject.DAL
             users.Id = lastKey + 1;
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "dbo.AddShop";
-
-                var idParameter = new SqlParameter()
-                {
-                    DbType = DbType.Int32,
-                    ParameterName = "@Id",
-                    Value = users.Id,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(idParameter);
-
-                var nameParameter = new SqlParameter()
-                {
-                    DbType = DbType.String,
-                    ParameterName = "@Name",
-                    Value = users.Name,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(nameParameter);
-
-                /*var addressParameter = new SqlParameter()
-                {
-                    DbType = DbType.String,
-                    ParameterName = "@Address",
-                    Value = users.Address,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(addressParameter);
-                */
+                SqlCommand command = GetSqlCommand(connection,"dbo.AddUser");
+                AddSqlParameter(GetSqlParameter("Id",users.Id,DbType.Int32),command);
+                AddSqlParameter(GetSqlParameter("Name", users.Name, DbType.String), command);
+                AddSqlParameter(GetSqlParameter("Surname", users.Surname, DbType.String), command);
+                AddSqlParameter(GetSqlParameter("Login", users.Login, DbType.String), command);
+                AddSqlParameter(GetSqlParameter("Password", users.Password, DbType.Binary), command);
+                AddSqlParameter(GetSqlParameter("City", users.City, DbType.String), command);
                 connection.Open();
-                var reader = command.ExecuteReader();
+                command.ExecuteNonQuery();
+
             }
         }
 
@@ -61,35 +37,36 @@ namespace SummerPracticeProject.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                var command = connection.CreateCommand();
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "dbo.Authentication";
-
-                var usernameParameter = new SqlParameter()
-                {
-                    DbType = DbType.String,
-                    ParameterName = "@Login",
-                    Value = user.Login,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(usernameParameter);
-
-                var passwordParameter = new SqlParameter()
-                {
-                    DbType = DbType.Binary,
-                    ParameterName = "@Password",
-                    Value = user.Hash,
-                    Direction = ParameterDirection.Input
-                };
-                command.Parameters.Add(passwordParameter);
+                SqlCommand command = GetSqlCommand(connection, "dbo.AddUser");
+                AddSqlParameter(GetSqlParameter("Login", user.Login, DbType.String), command);
+                AddSqlParameter(GetSqlParameter("Password", user.Password, DbType.Binary), command);
 
                 connection.Open();
-
                 var resultCommand = command.ExecuteScalar();
 
                 return (int)resultCommand > 0;
+            }
+        }
+
+        public void Edit(Users users)
+        {
+            int lastKey = _users.Keys.LastOrDefault();
+            users.Id = lastKey + 1;
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                SqlCommand command = GetSqlCommand(connection, "dbo.AddUser");
+                AddSqlParameter(GetSqlParameter("Id", users.Id, DbType.Int32), command);
+                AddSqlParameter(GetSqlParameter("Name", users.Name, DbType.String), command);
+                AddSqlParameter(GetSqlParameter("Surname", users.Surname, DbType.String), command);
+                AddSqlParameter(GetSqlParameter("Login", users.Login, DbType.String), command);
+                AddSqlParameter(GetSqlParameter("Password", users.Password, DbType.Binary), command);
+                AddSqlParameter(GetSqlParameter("City", users.City, DbType.String), command);
+                connection.Open();
+                command.ExecuteNonQuery();
 
             }
         }
+
+
     }
 }

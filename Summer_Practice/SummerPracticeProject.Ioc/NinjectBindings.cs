@@ -9,6 +9,7 @@ using SummerPracticeProject.Dao.Interfaces;
 using SummerPracticeProject.Entities;
 using SummerPracticeProject.BLL.Interfaces;
 using Ninject.Modules;
+
 namespace SummerPracticeProject.Ioc
 {
     public class NinjectBindings :NinjectModule

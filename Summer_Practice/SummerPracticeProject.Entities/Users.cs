@@ -13,7 +13,7 @@ namespace SummerPracticeProject.Entities
         public string Surname { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public byte[] Hash { get; set; }
+       // public byte[] Hash { get; set; }
         public string City{ get; set; }
 
         public Users() { }
