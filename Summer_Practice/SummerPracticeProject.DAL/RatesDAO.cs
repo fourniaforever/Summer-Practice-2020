@@ -12,15 +12,11 @@ namespace SummerPracticeProject.DAL
 {
     public class RatesDAO: TemplateDAO,IRatesDao
     {
-        private static Dictionary<int,Rates> _rates = new Dictionary<int,Rates>();
         public void Add(Rates r)
         {
-            int lastKey = _rates.Keys.LastOrDefault();
-            r.Id = lastKey + 1;
             using (var connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = GetSqlCommand(connection, "dbo.AddRates");
-                AddSqlParameter(GetSqlParameter("Id", r.Id, DbType.Int32), command);
+                SqlCommand command = GetSqlCommand(connection, "dbo.AddRate");
                 AddSqlParameter(GetSqlParameter("IdShop", r.IdShop, DbType.Int32), command);
                 AddSqlParameter(GetSqlParameter("Date", r.Date, DbType.DateTime), command);
                 AddSqlParameter(GetSqlParameter("Rate", r.Rate, DbType.Int32), command);

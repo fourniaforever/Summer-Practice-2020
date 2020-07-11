@@ -1,9 +1,8 @@
-CREATE PROC AddShop
- @Id INT,
+ALTER PROC AddShop
  @Name NVARCHAR(150),
  @Address NVARCHAR(150)
  AS
  BEGIN
-	INSERT INTO Shops (Id,Name,Address)
-	VALUES(@Id,@Name,@Address)
+	INSERT INTO Shops (Name,Address)
+	VALUES(@Name,@Address)
 END

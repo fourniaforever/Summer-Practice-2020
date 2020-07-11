@@ -11,5 +11,7 @@ namespace SummerPracticeProject.BLL.Interfaces
     {
         void Add(Users user);
         bool Authentication(Users user);
+        Users GetById(int id);
+        Users GetByLogin(string login);
     }
 }

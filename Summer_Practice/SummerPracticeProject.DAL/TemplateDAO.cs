@@ -12,7 +12,7 @@ namespace SummerPracticeProject.DAL
 {
     public class TemplateDAO
     {
-        protected string _connectionString = "Data Source=MSI/SQLEXPRESS;Integrated Security=True";
+        protected string _connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=ShopsRates;Integrated Security=True";
 
         public SqlParameter GetSqlParameter(string nameofparameter,object value,DbType type)
         {

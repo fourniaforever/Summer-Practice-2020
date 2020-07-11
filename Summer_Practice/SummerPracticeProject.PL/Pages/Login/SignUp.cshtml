@@ -19,22 +19,23 @@
 </head>
 <body>
     
-        <div class="container-for-form">
+        <div class="container-for-registration">
             <h1 class="h1-login">Registration</h1>
             <form class="form-signup" action="~/Pages/Login/SignUp.cshtml" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="Action" value="signup" />
-                <h1 class="label-unit">Login</h1>
-                <input required maxlength="30" minlength="4" class="signin-form-input" type="text" id="username-signup" name="Username" value="" placeholder="Login" />
-                <h1 class="label-unit">Password</h1>
-                <input required maxlength="30" minlength="4" class="signin-form-input" type="password" id="password-signup" name="Password" value="" placeholder="Password" />
-                <h1 class="label-unit">Repeat password</h1>
-                <input required maxlength="30" minlength="4" class="signin-form-input" type="password" name="RepeatPassword" id="repeat-password-signup" value="" placeholder="Repeat password" />
                 <h1 class="label-unit">Name</h1>
                 <input required maxlength="255" minlength="4" class="signin-form-input" type="text" name="Name" value="" placeholder="Real Name" />
                 <h1 class="label-unit">Surname</h1>
                 <input required maxlength="255" minlength="4" class="signin-form-input" type="text" name="Surname" value="" placeholder="Real Surname" />
                 <h1 class="label-unit">City</h1>
                 <input required maxlength="255" minlength="4" class="signin-form-input" type="text" name="City" value="" placeholder="City" />
+                <h1 class="label-unit">Login</h1>
+                <input required maxlength="30" minlength="4" class="signin-form-input" type="text" id="username-signup" name="Username" value="" placeholder="Login" />
+                <h1 class="label-unit">Password</h1>
+                <input required maxlength="30" minlength="4" class="signin-form-input" type="password" id="password-signup" name="Password" value="" placeholder="Password" />
+                <h1 class="label-unit">Repeat password</h1>
+                <input required maxlength="30" minlength="4" class="signin-form-input" type="password" name="RepeatPassword" id="repeat-password-signup" value="" placeholder="Repeat password" />
+
                 <button type="submit" class="button-signin">SignUp</button>
             </form>
             <form action="~/index.cshtml" method="post" enctype="multipart/form-data">
@@ -76,12 +77,15 @@
             {
                 userLogic.Add(new Users()
                 {
+                    Name = Request["Name"],
+                    Surname = Request["Surname"],
+                    City = Request["City"],
                     Login = Request["Username"],
                     Password = PasswordLocal
                 });
                 Response.Redirect("~/Pages/Login/RegistrationSuccess.cshtml");
             }
-            catch
+            catch(System.Data.SqlClient.SqlException ex)
             {
                 Response.Redirect("~/Pages/Login/RegistrationFailed.cshtml");
             }

@@ -12,5 +12,7 @@ namespace SummerPracticeProject.Dao.Interfaces
         void Add(Users user);
         bool Authentication(Users user);
         void Edit(Users user);
+        Users GetById(int id);
+        Users GetByLogin(string login);
     }
 }

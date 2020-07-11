@@ -1,0 +1,48 @@
+﻿@using Ninject;
+@using System.Security.Cryptography;
+@using SummerPracticeProject.Ioc;
+@using SummerPracticeProject.BLL.Interfaces;
+@using SummerPracticeProject.Entities;
+@using System.Text;
+@{
+    Layout = null;
+    var _rateLogic = DependencyResolver.Kernel.Get<IRatesLogic>();
+    var _shopLogic = DependencyResolver.Kernel.Get<IShopsLogic>();
+    var _userLogic = DependencyResolver.Kernel.Get<IUsersLogic>();
+}
+
+@if (IsPost)
+{
+    int _rating;
+    int _idShop;
+
+    if (Request["Action"] != null &&
+        Request["Action"] == "SetRating")
+    {
+        if (Request["ShopId"] != null &&
+            Request["ShopId"] != "" &&
+            Request["rating"] != null &&
+            Request["rating"] != "" &&
+            int.TryParse(Request["rating"], out _rating) &&
+            int.TryParse(Request["ShopId"], out _idShop))
+        {
+
+            _rateLogic.Add(new Rates()
+            {
+                Rate = _rating,
+                IdShop = _idShop,
+                Date = DateTime.Today,
+                RateBy = _userLogic.GetByLogin(User.Identity.Name).Id
+            });
+            Response.Redirect("~/Pages/Rates.cshtml");
+        }
+        else
+        {
+            Response.Redirect("~/Pages/Shops.cshtml");
+        }
+    }
+    else
+    {
+        Response.Redirect("~/Pages/Shops.cshtml");
+    }
+}

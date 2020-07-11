@@ -109,6 +109,8 @@
     <Content Include="Pages\UserPage.cshtml" />
     <Content Include="Pages\Login\RegistrationSuccess.cshtml" />
     <Content Include="Pages\Login\RegistrationFailed.cshtml" />
+    <Content Include="Pages\RatesLogic\RateSet.cshtml" />
+    <Content Include="Pages\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,11 +1,10 @@
-CREATE PROC AddRate
- @Id INT,
+ALTER PROC AddRate
  @IdShop INT,
  @Date date,
  @Rate INT,
  @RateBy INT
  AS
  BEGIN
-	INSERT INTO Rates(Id,IdShop,Date,Rate,RateBy)
-	VALUES(@Id,@IdShop,@Date,@Rate,@RateBy)
+	INSERT INTO Rates(IdShop,Date,Rate,RateBy)
+	VALUES(@IdShop,@Date,@Rate,@RateBy)
 END

@@ -1,17 +1,29 @@
-﻿@{
+﻿@using SummerPracticeProject.Entities;
+@using SummerPracticeProject.BLL.Interfaces;
+@using Ninject;
+@using System.Security.Cryptography;
+@using SummerPracticeProject.Ioc;
+@using SummerPracticeProject.BLL;
+@using System.Text;
+@{
     Layout = "~/Layouts/MainLayout.cshtml";
+    var _userLogic = DependencyResolver.Kernel.Get<IUsersLogic>();
+
 }
 
-<!DOCTYPE html>
+@section Header{}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
-    </div>
-</body>
-</html>
+@if (!User.Identity.IsAuthenticated)
+{
+    Response.Redirect("~/Pages/Login/SignIn.cshtml");
+}
+else
+{
+    Users _user = _userLogic.GetByLogin(User.Identity.Name);
+    <div class="container-for-form">
+        <div class="text-out">
+            @_user.Id @_user.Login @_user.Name @_user.Surname @_user.City
+        </div>
+        </div>
+
+}

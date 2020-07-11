@@ -1,5 +1,4 @@
-CREATE PROC AddUser
- @Id INT,
+ALTER PROC AddUser
  @Name nvarchar(100),
  @Surname nvarchar(150),
  @Login nvarchar(200),
@@ -7,6 +6,6 @@ CREATE PROC AddUser
  @City nvarchar(100)
  AS
  BEGIN
-	INSERT INTO Users(Id,Name,Surname,Login,Password,City)
-	VALUES(@Id,@Name,@Surname,@Login,@Password,@City)
+	INSERT INTO Users(Name,Surname,Login,Password,City)
+	VALUES(@Name,@Surname,@Login,@Password,@City)
 END

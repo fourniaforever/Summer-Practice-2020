@@ -1,0 +1,40 @@
+﻿@using SummerPracticeProject.Entities;
+@using SummerPracticeProject.BLL.Interfaces;
+@using Ninject;
+@using System.Security.Cryptography;
+@using SummerPracticeProject.Ioc;
+@using SummerPracticeProject.BLL;
+@using System.Text;
+@{
+    Layout = "~/Layouts/MainLayout.cshtml";
+    var _shopLogic = DependencyResolver.Kernel.Get<IShopsLogic>();
+}
+
+@section Header{}
+<div class="container-for-form">
+    <form action="~/Pages/Search.cshtml" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="Action" value="Search" />
+        <input type="number" name="Rating" value="" />
+        <button type="submit">Find by Rating</button>
+    </form>
+    @if (IsPost)
+    {
+        int _rate;
+        if (Request["Action"] != null &&
+            Request["Action"] != "" &&
+            Request["Rating"] != null &&
+            Request["Rating"] != "" &&
+            int.TryParse(Request["Rating"], out _rate))
+        {
+            foreach (var item in _shopLogic.SelectShopsByRate(_rate))
+            {
+                <div class="text-out">
+                    @item
+                </div>
+
+            }
+        }
+    }
+
+</div>
+

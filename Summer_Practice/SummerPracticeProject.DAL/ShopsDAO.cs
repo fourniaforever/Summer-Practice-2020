@@ -12,15 +12,11 @@ namespace SummerPracticeProject.DAL
 {
     public class ShopsDAO : TemplateDAO,IShopsDao
     {
-        private static Dictionary<int, Shops> _shops= new Dictionary<int, Shops>();
         public void Add(Shops s)
         {
-            int lastKey = _shops.Keys.LastOrDefault();
-            s.Id = lastKey + 1;
             using (var connection = new SqlConnection(_connectionString))
             {
                 SqlCommand command = GetSqlCommand(connection, "dbo.AddShop");
-                AddSqlParameter(GetSqlParameter("Id", s.Id, DbType.Int32), command);
                 AddSqlParameter(GetSqlParameter("Name", s.Name, DbType.String), command);
                 AddSqlParameter(GetSqlParameter("Address", s.Address, DbType.String), command);
                 connection.Open();
