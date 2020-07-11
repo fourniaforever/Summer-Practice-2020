@@ -1,5 +1,5 @@
 CREATE PROC GetAllUsers
 AS
 BEGIN
-SELECT * FROM Users
+	SELECT * FROM Users
 END

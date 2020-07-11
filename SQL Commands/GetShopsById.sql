@@ -2,5 +2,5 @@ CREATE PROC GetShopsById
 	@Id INT
 AS
 BEGIN
-	SELECT*FROM Shops WHERE Id = @Id
+	SELECT * FROM Shops WHERE Id = @Id
 END

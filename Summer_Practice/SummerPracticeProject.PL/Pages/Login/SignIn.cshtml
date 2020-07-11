@@ -1,8 +1,10 @@
 ﻿@using SummerPracticeProject.Entities;
 @using SummerPracticeProject.BLL.Interfaces;
 @using Ninject;
+@using System.Security.Cryptography;
 @using SummerPracticeProject.Ioc;
 @using SummerPracticeProject.BLL;
+@using System.Text;
 @{
     Layout = null;
 }
@@ -13,26 +15,27 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Sign In</title>
-    <link href="~/Styles/Login.css" rell="stylesheet" />
+    <link href="~/Styles/Styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="content">
-        <div class="container-for-buttons">
-            <h1>Sign In</h1>
+   
+        <div class="container-for-form">
+            <h1 class="h1-login">Sign In</h1>
             <form action="~/Pages/Login/SignIn.cshtml" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="Action" value="signin" />
-                <input required maxlength="30" minlength="4" class="" type="text" id="username-signin" name="Username" value="" placeholder="Username" />
+                <h1 class="label-unit">Login</h1>
+                <input required maxlength="30" minlength="4" class="signin-form-input" type="text" id="username-signin" name="Username" value="" placeholder="Login" />
 
-                <label class="sigin-form-label" for="password-signin">Password</label>
-                <input required maxlength="30" minlength="4" class="sigin-form-input" type="password" id="password-signin" name="Password" value="" placeholder="Password" />
-                <button type="submit" class="">SignIn</button>
+                <h1 class="label-unit">Password</h1>
+                <input required maxlength="30" minlength="4" class="signin-form-input" type="password" id="password-signin" name="Password" value="" placeholder="Password" />
+                <button type="submit" class="button-signin">SignIn</button>
             </form>
             <form action="~/index.cshtml" method="post" enctype="multipart/form-data">
-                <button type="submit" class="">Back to main page</button>
+                <button type="submit" class="button-signin">Back to main page</button>
             </form>
 
         </div>
-    </div>
+    
 </body>
 </html>
 
@@ -49,15 +52,21 @@
             {
                 //Code for User Logic
                 var userLogic = DependencyResolver.Kernel.Get<IUsersLogic>();
+                byte[] PasswordLocal;
+                using (SHA256 sha256 = SHA256.Create())
+                {
+                    byte[] Password = Encoding.Default.GetBytes(Request["Password"]);
+                    PasswordLocal = sha256.ComputeHash(Password);
+                }
                 bool isUser = userLogic.Authentication(new Users()
                 {
                     Login = Request["Username"] as string,
-                    Password = Request["Password"] as string
+                    Password = PasswordLocal
                 });
                 if (isUser)
                 {
                     FormsAuthentication.SetAuthCookie(Request["Username"], createPersistentCookie: true);
-                    Response.Redirect("~");
+                    Response.Redirect("~/index.cshtml");
                 }
                 else
                 {

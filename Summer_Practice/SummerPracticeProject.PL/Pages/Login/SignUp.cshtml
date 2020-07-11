@@ -3,6 +3,8 @@
 @using Ninject;
 @using SummerPracticeProject.Ioc;
 @using SummerPracticeProject.BLL;
+@using System.Security.Cryptography;
+@using System.Text;
 @{
     Layout = null;
 }
@@ -16,24 +18,30 @@
     <link href="~/Styles/Styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="content">
-        <div class="container-for-buttons">
+    
+        <div class="container-for-form">
             <h1 class="h1-login">Registration</h1>
             <form class="form-signup" action="~/Pages/Login/SignUp.cshtml" method="post" enctype="multipart/form-data">
-                <input class="hidden-input" type="text" name="Action" value="signup" />
-                <label class="signup-form-label" for="username-signup">Username</label>
-                <input required maxlength="30" minlength="4" class="signup-form-input" type="text" id="username-signup" name="Username" value="" placeholder="Username" />
-                <label class="signup-form-label" for="password-signup">Password</label>
-                <input required maxlength="30" minlength="4" class="signup-form-input" type="password" id="password-signup" name="Password" value="" placeholder="Password" />
-                <label class="signup-form-label" for="repeat-password-signup">Repeat password</label>
-                <input required maxlength="30" minlength="4" class="signup-form-input" type="password" name="RepeatPassword" id="repeat-password-signup" value="" placeholder="Repeat password" />
-                <button type="submit" class="button-sign-in">SignUp</button>
+                <input type="hidden" name="Action" value="signup" />
+                <h1 class="label-unit">Login</h1>
+                <input required maxlength="30" minlength="4" class="signin-form-input" type="text" id="username-signup" name="Username" value="" placeholder="Login" />
+                <h1 class="label-unit">Password</h1>
+                <input required maxlength="30" minlength="4" class="signin-form-input" type="password" id="password-signup" name="Password" value="" placeholder="Password" />
+                <h1 class="label-unit">Repeat password</h1>
+                <input required maxlength="30" minlength="4" class="signin-form-input" type="password" name="RepeatPassword" id="repeat-password-signup" value="" placeholder="Repeat password" />
+                <h1 class="label-unit">Name</h1>
+                <input required maxlength="255" minlength="4" class="signin-form-input" type="text" name="Name" value="" placeholder="Real Name" />
+                <h1 class="label-unit">Surname</h1>
+                <input required maxlength="255" minlength="4" class="signin-form-input" type="text" name="Surname" value="" placeholder="Real Surname" />
+                <h1 class="label-unit">City</h1>
+                <input required maxlength="255" minlength="4" class="signin-form-input" type="text" name="City" value="" placeholder="City" />
+                <button type="submit" class="button-signin">SignUp</button>
             </form>
             <form action="~/index.cshtml" method="post" enctype="multipart/form-data">
-                <button type="submit" class="button-sign-in">Back to main page</button>
+                <button type="submit" class="button-signin">Back to main page</button>
             </form>
         </div>
-    </div>
+
 </body>
 </html>
 @if (IsPost)
@@ -41,9 +49,16 @@
     if (Request["Action"] != null &&
         Request["Action"] == "signup")
     {
-        if (Request["Username"] != null &&
+        if (
+            Request["Name"] != null &&
+            Request["Surname"] != null &&
+            Request["City"] != null && 
+            Request["Username"] != null &&
             Request["Password"] != null &&
             Request["RepeatPassword"] != null &&
+            Request["Name"] != "" &&
+            Request["Surname"] != "" &&
+            Request["City"] != "" &&
             Request["Username"] != "" &&
             Request["Password"] != "" &&
             Request["RepeatPassword"] != "" &&
@@ -51,12 +66,18 @@
         {
             //User Logic
             var userLogic = DependencyResolver.Kernel.Get<IUsersLogic>();
+            byte[] PasswordLocal;
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] Password = Encoding.Default.GetBytes(Request["Password"]);
+                PasswordLocal = sha256.ComputeHash(Password);
+            }
             try
             {
                 userLogic.Add(new Users()
                 {
                     Login = Request["Username"],
-                    Password = Request["Password"]
+                    Password = PasswordLocal
                 });
                 Response.Redirect("~/Pages/Login/RegistrationSuccess.cshtml");
             }
