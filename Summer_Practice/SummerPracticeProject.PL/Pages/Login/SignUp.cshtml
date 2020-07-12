@@ -51,18 +51,13 @@
         Request["Action"] == "signup")
     {
         if (
-            Request["Name"] != null &&
-            Request["Surname"] != null &&
-            Request["City"] != null && 
-            Request["Username"] != null &&
-            Request["Password"] != null &&
-            Request["RepeatPassword"] != null &&
-            Request["Name"] != "" &&
-            Request["Surname"] != "" &&
-            Request["City"] != "" &&
-            Request["Username"] != "" &&
-            Request["Password"] != "" &&
-            Request["RepeatPassword"] != "" &&
+           ! string.IsNullOrEmpty(Request["Name"])&&
+           ! string.IsNullOrEmpty(Request["Surname"]) &&
+           ! string.IsNullOrEmpty(Request["City"]) &&
+           ! string.IsNullOrEmpty(Request["Username"]) &&
+           ! string.IsNullOrEmpty(Request["Password"]) &&
+           ! string.IsNullOrEmpty(Request["RepeatPassword"]) &&
+
             Request["Password"] == Request["RepeatPassword"])
         {
             //User Logic

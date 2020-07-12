@@ -27,7 +27,7 @@ namespace SummerPracticeProject.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = GetSqlCommand(connection, "dbo.RemoveUser");
+                SqlCommand command = GetSqlCommand(connection, "dbo.RemoveUsersById");
                 AddSqlParameter(GetSqlParameter("Id", id, DbType.Int32), command);
 
                 connection.Open();

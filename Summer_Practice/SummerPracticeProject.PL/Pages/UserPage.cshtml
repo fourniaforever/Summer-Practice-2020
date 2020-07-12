@@ -46,20 +46,13 @@ else
     </div>
     if (IsPost)
     {
-        if (Request["Action"] != null &&
-        Request["Action"] != "" &&
+        if (!string.IsNullOrEmpty(Request["Action"])  &&
             Request["Action"] == "Edit" &&
-            Request["Login"] != null &&
-            Request["Login"] != "" &&
-            Request["Name"] != null &&
-            Request["Name"] != "" &&
-            Request["Surname"] != null &&
-            Request["Surname"] != "" &&
-
-            Request["Password"] != null &&
-            Request["Password"] != "" &&
-            Request["City"] != null &&
-            Request["City"] != ""
+           ! string.IsNullOrEmpty(Request["Login"])&&
+           ! string.IsNullOrEmpty(Request["Name"]) &&
+           ! string.IsNullOrEmpty(Request["Surname"])&&
+           ! string.IsNullOrEmpty(Request["Password"]) &&
+           ! string.IsNullOrEmpty(Request["City"])
             )
         {
 

@@ -111,6 +111,8 @@
     <Content Include="Pages\Login\RegistrationFailed.cshtml" />
     <Content Include="Pages\RatesLogic\RateSet.cshtml" />
     <Content Include="Pages\Search.cshtml" />
+    <Content Include="Pages\RatesLogic\RateDelete.cshtml" />
+    <Content Include="Pages\ShopsLogic\ShopSet.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

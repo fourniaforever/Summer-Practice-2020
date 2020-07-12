@@ -21,6 +21,11 @@ namespace SummerPracticeProject.BLL
         {
             _rateDao.Add(rate);
         }
+
+        public Rates GetByRate(int rate)
+        {
+            return _rateDao.GetByRate(rate);
+        }
         public void Remove(int id)
         {
             _rateDao.Remove(id);
@@ -29,6 +34,12 @@ namespace SummerPracticeProject.BLL
         {
             return _rateDao.GetById(id);
         }
+
+        public Rates GetByShopId(int id)
+        {
+            return _rateDao.GetByShopId(id);
+        }
+
         public IEnumerable<Rates> GetAll()
         {
             return _rateDao.GetAll();

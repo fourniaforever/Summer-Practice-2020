@@ -13,5 +13,8 @@ namespace SummerPracticeProject.Dao.Interfaces
         void Remove(int id);
         Rates GetById(int id);
         IEnumerable<Rates> GetAll();
+        Rates GetByRate(int rate);
+
+        Rates GetByShopId(int id);
     }
 }

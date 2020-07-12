@@ -42,13 +42,11 @@
 @{
     if (IsPost)
     {
-        if (Request["Action"] != null &&
+        if (!string.IsNullOrEmpty(Request["Action"])&&
             Request["Action"] == "signin")
         {
-            if (Request["Username"] != null &&
-                Request["Password"] != null &&
-                Request["Username"] != "" &&
-                Request["Password"] != "")
+            if (!string.IsNullOrEmpty(Request["Username"])&&
+                !string.IsNullOrEmpty(Request["Password"]) )
             {
                 //Code for User Logic
                 var userLogic = DependencyResolver.Kernel.Get<IUsersLogic>();

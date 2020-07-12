@@ -13,25 +13,16 @@
 
 @if (IsPost)
 {
-    int _rating;
-    int _idShop;
+    int id;
 
-    if (!string.IsNullOrEmpty(Request["Action"] )&&
-        Request["Action"] == "SetRating")
+    if (!string.IsNullOrEmpty(Request["Action"]) &&
+        Request["Action"] == "Delete rate")
     {
-        if (!string.IsNullOrEmpty(Request["ShopId"]) &&
-            !string.IsNullOrEmpty(Request["rating"]) &&
-            int.TryParse(Request["rating"], out _rating) &&
-            int.TryParse(Request["ShopId"], out _idShop))
+        if (!string.IsNullOrEmpty(Request["Id"])&&
+            int.TryParse(Request["Id"], out id))
         {
 
-            _rateLogic.Add(new Rates()
-            {
-                Rate = _rating,
-                IdShop = _idShop,
-                Date = DateTime.Today,
-                RateBy = _userLogic.GetByLogin(User.Identity.Name).Id
-            });
+            _rateLogic.Remove(id);
             Response.Redirect("~/Pages/Rates.cshtml");
         }
         else

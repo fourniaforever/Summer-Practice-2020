@@ -29,7 +29,7 @@ namespace SummerPracticeProject.DAL
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = GetSqlCommand(connection, "dbo.RemoveRate");
+                SqlCommand command = GetSqlCommand(connection, "dbo.RemoveRatesById");
                 AddSqlParameter(GetSqlParameter("Id", id, DbType.Int32), command);
                 connection.Open();
                 var reader = command.ExecuteReader();
@@ -53,6 +53,49 @@ namespace SummerPracticeProject.DAL
                         (DateTime)reader["Date"],
                         (int)reader["Rate"],
                         (int)reader["RateBy"]);
+                }
+                return ChosenRate;
+            }
+        }
+
+        public Rates GetByRate(int rate)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                SqlCommand command = GetSqlCommand(connection, "dbo.GetRatesByRate");
+                AddSqlParameter(GetSqlParameter("Rate", rate, DbType.Int32), command);
+
+                connection.Open();
+                var reader = command.ExecuteReader();
+                Rates ChosenRate = null;
+                while (reader.Read())
+                {
+                    ChosenRate = new Rates((int)reader["Id"],
+                       (int)reader["IdShop"],
+                       (DateTime)reader["Date"],
+                       (int)reader["Rate"],
+                       (int)reader["RateBy"]);
+                }
+                return ChosenRate;
+            }
+        }
+        public Rates GetByShopId(int id)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                SqlCommand command = GetSqlCommand(connection, "dbo.GetRatesByRate");
+                AddSqlParameter(GetSqlParameter("IdShop", id, DbType.Int32), command);
+
+                connection.Open();
+                var reader = command.ExecuteReader();
+                Rates ChosenRate = null;
+                while (reader.Read())
+                {
+                    ChosenRate = new Rates((int)reader["Id"],
+                       (int)reader["IdShop"],
+                       (DateTime)reader["Date"],
+                       (int)reader["Rate"],
+                       (int)reader["RateBy"]);
                 }
                 return ChosenRate;
             }

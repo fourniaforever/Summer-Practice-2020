@@ -15,19 +15,34 @@
 @section Header{}
 <body>
 
-
     @foreach (Rates item in _rateLogic.GetAll())
     {
         <div class="shop-row">
             <div class="text-out">
-            @_shopLogic.GetById(item.IdShop).Name
+
+                @_shopLogic.GetById(item.IdShop).Name
                 Rate:
-            @item.Rate
+                @item.Rate
                 Date:
-            @item.Date.ToShortDateString()
+                @item.Date.ToShortDateString()
                 By User:
-            @_userLogic.GetById(item.RateBy).Name
-                </div>
+                @_userLogic.GetById(item.RateBy).Name
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form action="~/Pages/RatesLogic/RateDelete.cshtml" method="post" enctype="multipart/form-data">
+
+                        <input type="hidden" name="Action" value="Delete rate" />
+                        <input type="hidden" name="Id" value="@item.Id">
+                        <button type="submit" class="button-rate">Delete</button>
+
+                    </form>
+                }
+                else
+                {
+                    <p class="text-out">Sign in to Rate</p>
+                }
+
+            </div>
         </div>
     }
 

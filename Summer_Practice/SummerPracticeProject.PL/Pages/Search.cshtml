@@ -20,10 +20,8 @@
     @if (IsPost)
     {
         int _rate;
-        if (Request["Action"] != null &&
-            Request["Action"] != "" &&
-            Request["Rating"] != null &&
-            Request["Rating"] != "" &&
+        if (!string.IsNullOrEmpty(Request["Action"]) &&
+            !string.IsNullOrEmpty(Request["Rating"]) &&
             int.TryParse(Request["Rating"], out _rate))
         {
             foreach (var item in _shopLogic.SelectShopsByRate(_rate))
