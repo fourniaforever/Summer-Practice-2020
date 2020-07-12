@@ -39,5 +39,10 @@ namespace SummerPracticeProject.BLL
         {
             return _userDao.GetByLogin(login);
         }
+
+        public void Edit(Users user)
+        {
+            _userDao.Edit(user);
+        }
     }
 }

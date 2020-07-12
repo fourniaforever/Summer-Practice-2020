@@ -1,4 +1,5 @@
-﻿@using SummerPracticeProject.Entities;
+﻿
+@using SummerPracticeProject.Entities;
 @using SummerPracticeProject.BLL.Interfaces;
 @using Ninject;
 @using System.Security.Cryptography;
@@ -20,10 +21,65 @@
 else
 {
     Users _user = _userLogic.GetByLogin(User.Identity.Name);
-    <div class="container-for-form">
+    <div class="edit-text">
         <div class="text-out">
-            @_user.Id @_user.Login @_user.Name @_user.Surname @_user.City
+            @_user.Name @_user.Surname @_user.City
         </div>
-        </div>
+    </div>
+    <div class="container-for-form-2">
+        <form action="~/Pages/UserPage.cshtml" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="Action" value="Edit">
+            <h1 class="label-unit">Login</h1>
+            <input type="text" class="edit-data" name="Login" value="@_user.Login" />
+            <h1 class="label-unit">Password</h1>
+            <input type="password" class="edit-data" name="Password" value="@_user.Password" />
+            <h1 class="label-unit">Name</h1>
+            <input type="text" class="edit-data" name="Name" value="@_user.Name" />
+            <h1 class="label-unit">Surname</h1>
+            <input type="text" class="edit-data" name="Surname" value="@_user.Surname" />
+            <h1 class="label-unit">City</h1>
+            <input type="text" class="edit-data" name="City" value="@_user.City" />
+            <button type="submit" class="" style="width: 66px;  margin-top: 2%; margin-left: 45%;  height: 24px;"> Edit </button>
+        </form>
 
+
+    </div>
+    if (IsPost)
+    {
+        if (Request["Action"] != null &&
+        Request["Action"] != "" &&
+            Request["Action"] == "Edit" &&
+            Request["Login"] != null &&
+            Request["Login"] != "" &&
+            Request["Name"] != null &&
+            Request["Name"] != "" &&
+            Request["Surname"] != null &&
+            Request["Surname"] != "" &&
+
+            Request["Password"] != null &&
+            Request["Password"] != "" &&
+            Request["City"] != null &&
+            Request["City"] != ""
+            )
+        {
+
+            var userLogic = DependencyResolver.Kernel.Get<IUsersLogic>();
+            byte[] PasswordLocal;
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] Password = Encoding.Default.GetBytes(Request["Password"]);
+                PasswordLocal = sha256.ComputeHash(Password);
+            }
+            Users _userEditing = new Users()
+            {
+                Name = Request["Name"] as string,
+                Login = Request["Login"] as string,
+                Surname = Request["Surname"] as string,
+                Password = PasswordLocal,
+                City = Request["City"] as string
+            };
+            _userLogic.Edit(_userEditing);
+            Response.Redirect("~/Pages/UserPage.cshtml");
+        }
+    }
 }

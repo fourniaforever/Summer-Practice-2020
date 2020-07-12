@@ -42,10 +42,38 @@ header {
     height:85%;
     display:block;
 }
+
 .container-for-form{
-    background-color:hotpink;
+    background-color: hotpink;
     width: 500px;
     height: 430px;
+    margin: auto;
+    border-radius: 25px;
+    border-color: rgb(255, 105, 180);
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.76);
+    padding: 10px;
+}
+.container-for-form-2{
+    background-color: hotpink;
+    width: 500px;
+    height: 426px;
+    margin: auto;
+    border-radius: 25px;
+    border-color: rgb(255, 105, 180);
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.76);
+    padding: 10px;
+}
+.edit-data {
+    width: 90%;
+    height: 29px;
+    border-radius: 15px;
+    margin-left: 4%;
+    margin-top: -6%;
+}
+.edit-text {
+    background-color: hotpink;
+    width: 500px;
+    height: 51px;
     margin: auto;
     border-radius: 25px;
     border-color: rgb(255, 105, 180);
