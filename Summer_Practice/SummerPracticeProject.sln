@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerPracticeProject.Ioc",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerPracticeProject.PL", "SummerPracticeProject.PL\SummerPracticeProject.PL.csproj", "{950820FF-4E38-4203-844D-80D95787D0CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerPracticeProject.MVC", "SummerPracticeProject.MVC\SummerPracticeProject.MVC.csproj", "{F0EE51B8-DBAA-4845-8D5A-B7CCFFF5DA94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{950820FF-4E38-4203-844D-80D95787D0CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{950820FF-4E38-4203-844D-80D95787D0CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{950820FF-4E38-4203-844D-80D95787D0CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0EE51B8-DBAA-4845-8D5A-B7CCFFF5DA94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0EE51B8-DBAA-4845-8D5A-B7CCFFF5DA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0EE51B8-DBAA-4845-8D5A-B7CCFFF5DA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0EE51B8-DBAA-4845-8D5A-B7CCFFF5DA94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

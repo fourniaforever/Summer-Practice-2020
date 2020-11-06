@@ -1,0 +1,56 @@
+﻿@using SummerPracticeProject.Entities;
+@using SummerPracticeProject.BLL;
+@using SummerPracticeProject.BLL.Interfaces;
+@using SummerPracticeProject.Ioc
+@using Ninject;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Shops and Rates</title>
+    <link href="~/Styles/Styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <header>
+            
+            <a href="~/Views/Home/Shops.cshtml" class="menu-element">Shops</a>
+            <a href="~/Views/Home/Rates.cshtml" class="menu-element">Rates</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="~/Views/User/LogOut.cshtml" class="menu-element">Logout</a>
+                <a href="~/Views/User/UserPage.cshtml" class="menu-element">@User.Identity.Name </a>
+                <a href="~/Views/Home/Search.cshtml" class="menu-element">Search</a>
+
+                <a href="~/Views/Shops/AddShop.cshtml" class="menu-element">Add Shop</a>
+
+            }
+            else
+            {
+                <a href="~/Views/User/SignIn.cshtml" class="menu-element">Sign in</a>
+                <a href="~/Views/User/SignUp.cshtml" class="menu-element">Sign Up</a>
+            }
+        </header>
+
+
+    </div>
+    <div class="content">
+        <div class="container">
+            <u class="menu-element"> @Html.ActionLink("Shops", "Shops", "Home")</u>
+            <u class="menu-element"> @Html.ActionLink("Rates", "Rates", "Home")</u>
+            <u class="menu-element"> @Html.ActionLink("Shops", "Shops", "Home")</u>
+            <u class="menu-element"> @Html.ActionLink("Shops", "Shops", "Home")</u>
+            <u class="menu-element"> @Html.ActionLink("Shops", "Shops", "Home")</u>
+        </div>
+        <div class="content-functional">
+            @RenderBody()
+        </div>
+
+    </div>
+</body>
+</html>
