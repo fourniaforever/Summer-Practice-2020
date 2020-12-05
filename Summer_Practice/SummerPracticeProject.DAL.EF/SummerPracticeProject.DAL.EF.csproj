@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0677406D-E469-4675-9577-E2A80A71D92B}</ProjectGuid>
+    <ProjectGuid>{9B572BCA-4685-4B0A-A038-E3FE100FDCFD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SummerPracticeProject.DAL</RootNamespace>
-    <AssemblyName>SummerPracticeProject.DAL</AssemblyName>
+    <RootNamespace>SummerPracticeProject.DAL.EF</RootNamespace>
+    <AssemblyName>SummerPracticeProject.DAL.EF</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -43,7 +43,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,25 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RatesDAO.cs" />
-    <Compile Include="ShopsDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TemplateDAO.cs" />
-    <Compile Include="UsersDAO.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SummerPracticeProject.Dao.Interfaces\SummerPracticeProject.Dao.Interfaces.csproj">
-      <Project>{24d6f364-edaf-4372-925f-88c9daef987e}</Project>
-      <Name>SummerPracticeProject.Dao.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SummerPracticeProject.Entities\SummerPracticeProject.Entities.csproj">
-      <Project>{32933068-2876-4317-9d25-423ed086a803}</Project>
-      <Name>SummerPracticeProject.Entities</Name>
-    </ProjectReference>
+    <Compile Include="ShopRatesContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SummerPracticeProject.Entities\SummerPracticeProject.Entities.csproj">
+      <Project>{32933068-2876-4317-9d25-423ed086a803}</Project>
+      <Name>SummerPracticeProject.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

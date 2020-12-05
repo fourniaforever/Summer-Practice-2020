@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0677406D-E469-4675-9577-E2A80A71D92B}</ProjectGuid>
+    <ProjectGuid>{351E36E3-E21B-4297-A5F6-4127F90C43D2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SummerPracticeProject.DAL</RootNamespace>
-    <AssemblyName>SummerPracticeProject.DAL</AssemblyName>
+    <RootNamespace>SummerPracticeProject.DAL.Repositories</RootNamespace>
+    <AssemblyName>SummerPracticeProject.DAL.Repositories</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -43,7 +43,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,13 +51,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RatesDAO.cs" />
-    <Compile Include="ShopsDAO.cs" />
+    <Compile Include="ShopsRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TemplateDAO.cs" />
-    <Compile Include="UsersDAO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SummerPracticeProject.DAL.EF\SummerPracticeProject.DAL.EF.csproj">
+      <Project>{9b572bca-4685-4b0a-a038-e3fe100fdcfd}</Project>
+      <Name>SummerPracticeProject.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SummerPracticeProject.DAL\SummerPracticeProject.DAL.csproj">
+      <Project>{0677406d-e469-4675-9577-e2a80a71d92b}</Project>
+      <Name>SummerPracticeProject.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SummerPracticeProject.Dao.Interfaces\SummerPracticeProject.Dao.Interfaces.csproj">
       <Project>{24d6f364-edaf-4372-925f-88c9daef987e}</Project>
       <Name>SummerPracticeProject.Dao.Interfaces</Name>

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq;
+using System.Web;
 
-namespace SummerPracticeProject.Entities
+namespace SummerPracticeProject.MVC.Models
 {
     public class Users
     {
@@ -13,7 +12,6 @@ namespace SummerPracticeProject.Entities
         public string Surname { get; set; }
         public string Login { get; set; }
         public byte[] Password { get; set; }
-        public string City{ get; set; }
+        public string City { get; set; }
     }
 }
-

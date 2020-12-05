@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace SummerPracticeProject.Entities
+namespace SummerPracticeProject.MVC.Models
 {
-   public class Shops
+    public class Shops
     {
         public int Id { get; set; }
         public string Name { get; set; }
