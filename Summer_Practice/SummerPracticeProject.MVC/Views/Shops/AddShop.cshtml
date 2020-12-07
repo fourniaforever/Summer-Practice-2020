@@ -1,58 +1,17 @@
-﻿@using Ninject;
-@using System.Security.Cryptography;
-@using SummerPracticeProject.Ioc;
-@using SummerPracticeProject.BLL.Interfaces;
-@using SummerPracticeProject.Entities;
-@using System.Text;
+﻿
+@model  SummerPracticeProject.Entities.Shops
 @{
-    Layout = "~/Layouts/MainLayout.cshtml";
-    var _rateLogic = DependencyResolver.Kernel.Get<IRatesLogic>();
-    var _shopLogic = DependencyResolver.Kernel.Get<IShopsLogic>();
-    var _userLogic = DependencyResolver.Kernel.Get<IUsersLogic>();
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<h3>Add shop</h3>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <p>@Html.ValidationMessageFor(m => m.Name )</p>
+    <p>Name of the shop: @Html.EditorFor(m => m.Name)</p>
+    <p>@Html.ValidationMessageFor(m => m.Address)</p>
+    <p>Address: @Html.EditorFor(m => m.Address)</p>
+    <input type="submit" value="Add" />
 }
 
-@section Header{}
-
-<div class="container-for-form">
-    <form action="~/Pages/ShopsLogic/ShopSet.cshtml" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="Action" value="SetShop" />
-        <h1 class="label-unit">Name</h1>
-        <input type="text" class="edit-data" name="Name" value="" />
-        <h1 class="label-unit">Address</h1>
-        <input type="text" class="edit-data" name="Address" value="" />
-        <button type="submit">Add</button>
-    </form>
-    @if (IsPost)
-    {
-
-        if (string.IsNullOrEmpty(Request["Action"]) &&
-            Request["Action"] == "SetShop")
-        {
-            if (string.IsNullOrEmpty(Request["Name"]) &&
-                string.IsNullOrEmpty(Request["Address"]))
-
-
-            {
-                string _name = Request["Name"];
-                string _address = Request["Address"];
-
-
-                _shopLogic.Add(new Shops()
-                {
-                    Name = _name,
-                    Address = _address
-                });
-                Response.Redirect("~/Pages/Shops.cshtml");
-            }
-            else
-            {
-                Response.Redirect("~/Pages/Rates.cshtml");
-            }
-        }
-        else
-        {
-            Response.Redirect("~/Pages/Rates.cshtml");
-        }
-
-    }
-</div>

@@ -48,11 +48,14 @@ namespace SummerPracticeProject.DAL
                 Rates ChosenRate = null;
                 while (reader.Read())
                 {
-                     ChosenRate = new Rates((int)reader["Id"],
-                        (int)reader["IdShop"],
-                        (DateTime)reader["Date"],
-                        (int)reader["Rate"],
-                        (int)reader["RateBy"]);
+                     ChosenRate = new Rates
+                     {
+                        Id = (int)reader["Id"],
+                        IdShop = (int)reader["IdShop"],
+                        Date = (DateTime)reader["Date"],
+                        Rate = (int)reader["Rate"],
+                        RateBy = (int)reader["RateBy"]
+                     };
                 }
                 return ChosenRate;
             }
@@ -70,11 +73,14 @@ namespace SummerPracticeProject.DAL
                 Rates ChosenRate = null;
                 while (reader.Read())
                 {
-                    ChosenRate = new Rates((int)reader["Id"],
-                       (int)reader["IdShop"],
-                       (DateTime)reader["Date"],
-                       (int)reader["Rate"],
-                       (int)reader["RateBy"]);
+                    ChosenRate = new Rates
+                    {
+                       Id = (int)reader["Id"],
+                       IdShop = (int)reader["IdShop"],
+                       Date = (DateTime)reader["Date"],
+                       Rate = (int)reader["Rate"],
+                       RateBy = (int)reader["RateBy"]
+                    };
                 }
                 return ChosenRate;
             }
@@ -91,11 +97,14 @@ namespace SummerPracticeProject.DAL
                 Rates ChosenRate = null;
                 while (reader.Read())
                 {
-                    ChosenRate = new Rates((int)reader["Id"],
-                       (int)reader["IdShop"],
-                       (DateTime)reader["Date"],
-                       (int)reader["Rate"],
-                       (int)reader["RateBy"]);
+                    ChosenRate = new Rates
+                    {
+                        Id = (int)reader["Id"],
+                        IdShop = (int)reader["IdShop"],
+                        Date = (DateTime)reader["Date"],
+                        Rate = (int)reader["Rate"],
+                        RateBy = (int)reader["RateBy"]
+                    };
                 }
                 return ChosenRate;
             }
@@ -115,11 +124,14 @@ namespace SummerPracticeProject.DAL
                 List<Rates> rates = new List<Rates>();
                 while (reader.Read())
                 {
-                    rates.Add(new Rates((int)reader["Id"],
-                        (int)reader["IdShop"],
-                        (DateTime)reader["Date"],
-                        (int)reader["Rate"],
-                        (int)reader["RateBy"]));
+                    rates.Add(new Rates
+                    {
+                        Id = (int)reader["Id"],
+                        IdShop = (int)reader["IdShop"],
+                        Date = (DateTime)reader["Date"],
+                        Rate = (int)reader["Rate"],
+                        RateBy = (int)reader["RateBy"]
+                    });
                 }
                 return rates;
             }

@@ -16,4 +16,3 @@ namespace SummerPracticeProject.Entities
         public string City{ get; set; }
     }
 }
-

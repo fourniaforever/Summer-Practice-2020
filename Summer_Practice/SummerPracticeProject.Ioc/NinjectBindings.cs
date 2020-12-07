@@ -19,10 +19,6 @@ namespace SummerPracticeProject.Ioc
             Bind<IUsersDao>().To<UsersDAO>();
             Bind<IShopsDao>().To<ShopsDAO>();
             Bind<IRatesDao>().To<RatesDAO>();
-
-            Bind<IUsersLogic>().To<UsersLogic>();
-            Bind<IShopsLogic>().To<ShopsLogic>();
-            Bind<IRatesLogic>().To<RatesLogic>();
         }
     }
 }

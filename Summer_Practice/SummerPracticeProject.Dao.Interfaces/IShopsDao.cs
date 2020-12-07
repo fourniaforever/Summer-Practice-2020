@@ -7,14 +7,12 @@ using SummerPracticeProject.Entities;
 
 namespace SummerPracticeProject.Dao.Interfaces
 {
-    public interface ShopsIRepository<Shops>
+    public interface IShopsDao
     {
         void Add(Shops item);
         void Remove(int id);
         Shops GetById(int id);
         IEnumerable<Shops> GetAll();
-        Shops GetByRate(int item);
-
         IEnumerable<string> SelectShopsByRate(int item);
     }
 }

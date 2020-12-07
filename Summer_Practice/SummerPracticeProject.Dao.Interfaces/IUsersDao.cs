@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using SummerPracticeProject.Entities;
 
-namespace SummerPracticeProject.BLL.Interfaces
+namespace SummerPracticeProject.Dao.Interfaces
 {
-    public interface IUsersLogic
+    public interface IUsersDao
     {
-        void Add(Users user);
         bool Authentication(Users user);
         void Edit(Users user);
         Users GetByLogin(string login);
+        void Add(Users item);
     }
 }

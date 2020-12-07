@@ -12,8 +12,6 @@ namespace SummerPracticeProject.BLL.Interfaces
         void Add(Rates rate);
         void Remove(int id);
         Rates GetById(int id);
-        Rates GetByRate(int rate);
-        Rates GetByShopId(int id);
         IEnumerable<Rates> GetAll();
     }
 }

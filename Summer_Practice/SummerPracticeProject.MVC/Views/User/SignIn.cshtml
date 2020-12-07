@@ -1,7 +1,19 @@
-﻿
+﻿@model  SummerPracticeProject.Entities.Users
 @{
-    ViewBag.Title = "SignIn";
+    Layout = "/Views/Shared/_Layout.cshtml";
 }
+<h3>Sign In</h3>
+<br />
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true);
+    <p>@Html.ValidationMessageFor(m => m.Login)</p>
+    <p>Login: @Html.EditorFor(m => m.Login)</p>
+    <p>@Html.ValidationMessageFor(m => m.Password)</p>
+    <p>Password: @Html.PasswordFor(m => m.Password)</p>
+    <input type="submit" value="Sign In" />
+} 
 
-<h2>SignIn</h2>
-
+    <form method="get" action=@Url.Action("SignUp", "User")>
+        <input type="submit" value="Sign Up" />
+    </form>

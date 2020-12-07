@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Shops and Rates</title>
+    <link href="~/Styles/Styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <header>
+          
+            <a href="~/Views/Shops/GetAllShops.cshtml" class="menu-element">Shops</a>
+            <a href="~/Views/Rates/GetAllRates.cshtml" class="menu-element">Rates</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="~/Views/User/LogOut.cshtml" class="menu-element">Logout</a>
+                <a href="~/Views/User/UserPage.cshtml" class="menu-element">@User.Identity.Name </a>
+                <a href="~/Views/Shops/Search.cshtml" class="menu-element">Search</a>
+
+                <a href="~/Views/Shops/AddShop.cshtml" class="menu-element">Add Shop</a>
+            }
+            else
+            {
+                <a href="~/Views/User/SignIn.cshtml" class="menu-element">Sign in</a>
+                <a href="~/Views/User/SignUp.cshtml" class="menu-element">Sign Up</a>
+            }
+        </header>
+
+
+    
+    </div>
+</body>
+</html>

@@ -35,16 +35,6 @@ namespace SummerPracticeProject.DAL.Repositories
             db.Shops.Add(shop);
         }
 
-        //public void Update(Shops shops)
-        //{
-        //    db.Entry(shops).State = EntityState.Modified;
-        //}
-
-        //public IEnumerable<Shops> Find(Func<Shops, Boolean> predicate)
-        //{
-        //    return db.Shops.Where(predicate).ToList();
-        //}
-
         public void Remove(int id)
         {
             Shops shops = db.Shops.Find(id);

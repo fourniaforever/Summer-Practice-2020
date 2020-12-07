@@ -10,7 +10,7 @@ using System.Data.SqlClient;
 
 namespace SummerPracticeProject.DAL
 {
-    public class ShopsDAO : TemplateDAO,IShopsDao
+    public class ShopsDAO : TemplateDAO, IShopsDao
     {
         public void Add(Shops s)
         {
@@ -47,10 +47,12 @@ namespace SummerPracticeProject.DAL
                 Shops ChosenShop = null;
                 while (reader.Read())
                 {
-                    ChosenShop = new Shops((int)reader["Id"],
-                       reader["Name"] as string,
-                       reader["Address"] as string
-                       );
+                    ChosenShop = new Shops
+
+                    {  Id = (int)reader["Id"],
+                       Name = reader["Name"] as string,
+                       Address = reader["Address"] as string
+                    };
                 }
                 return ChosenShop;
             }
@@ -68,10 +70,12 @@ namespace SummerPracticeProject.DAL
                 List<Shops> shops = new List<Shops>();
                 while (reader.Read())
                 {
-                    shops.Add(new Shops((int)reader["Id"],
-                       reader["Name"] as string,
-                       reader["Address"] as string
-                       ));
+                    shops.Add(new Shops
+                    {
+                        Id = (int)reader["Id"],
+                        Name = reader["Name"] as string,
+                        Address = reader["Address"] as string
+                    });
                 }
                 return shops;
             }
