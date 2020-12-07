@@ -3,6 +3,8 @@
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 <h3>Sign In</h3>
+
+<link href="~/Styles/Styles.css" rel="stylesheet" />
 <br />
 @using (Html.BeginForm())
 {
@@ -12,8 +14,8 @@
     <p>@Html.ValidationMessageFor(m => m.Password)</p>
     <p>Password: @Html.PasswordFor(m => m.Password)</p>
     <input type="submit" value="Sign In" />
-} 
+}
 
-    <form method="get" action=@Url.Action("SignUp", "User")>
-        <input type="submit" value="Sign Up" />
-    </form>
+<form method="get" action=@Url.Action("SignUp", "User")>
+    <input type="submit" value="Sign Up" />
+</form>
