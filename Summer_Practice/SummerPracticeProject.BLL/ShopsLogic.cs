@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SummerPracticeProject.Entities;
-using SummerPracticeProject.BLL.Interfaces;
+﻿using SummerPracticeProject.BLL.Interfaces;
 using SummerPracticeProject.DAL;
 using SummerPracticeProject.Dao.Interfaces;
+using SummerPracticeProject.Entities;
+using System.Collections.Generic;
 
 namespace SummerPracticeProject.BLL
 {
-    public class ShopsLogic:IShopsLogic
+    public class ShopsLogic : IShopsLogic
     {
         private IShopsDao _shopsDao;
+
         public ShopsLogic(IShopsDao shopsDao)
         {
             _shopsDao = new ShopsDAO();

@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SummerPracticeProject.Entities;
+﻿using SummerPracticeProject.Entities;
 
 namespace SummerPracticeProject.BLL.Interfaces
 {
     public interface IUsersLogic
     {
         void Add(Users user);
+
         bool Authentication(Users user);
+
         void Edit(Users user);
+
         Users GetByLogin(string login);
     }
 }

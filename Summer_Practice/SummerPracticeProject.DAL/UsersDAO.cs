@@ -1,25 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SummerPracticeProject.Dao.Interfaces;
-using System.Data.SqlClient;
-using System.Data;
+﻿using SummerPracticeProject.Dao.Interfaces;
 using SummerPracticeProject.Entities;
-
+using System.Data;
+using System.Data.SqlClient;
 
 namespace SummerPracticeProject.DAL
 {
-    public class UsersDAO: TemplateDAO,IUsersDao
+    public class UsersDAO : TemplateDAO, IUsersDao
     {
-        
         public void Add(Users users)
         {
-            
             using (var connection = new SqlConnection(_connectionString))
             {
-                SqlCommand command = GetSqlCommand(connection,"dbo.AddUser");
+                SqlCommand command = GetSqlCommand(connection, "dbo.AddUser");
                 AddSqlParameter(GetSqlParameter("Name", users.Name, DbType.String), command);
                 AddSqlParameter(GetSqlParameter("Surname", users.Surname, DbType.String), command);
                 AddSqlParameter(GetSqlParameter("Login", users.Login, DbType.String), command);
@@ -47,7 +39,6 @@ namespace SummerPracticeProject.DAL
 
         public void Edit(Users users)
         {
-            
             using (var connection = new SqlConnection(_connectionString))
             {
                 SqlCommand command = GetSqlCommand(connection, "dbo.AddUser");
@@ -58,7 +49,6 @@ namespace SummerPracticeProject.DAL
                 AddSqlParameter(GetSqlParameter("City", users.City, DbType.String), command);
                 connection.Open();
                 command.ExecuteNonQuery();
-
             }
         }
 
@@ -74,15 +64,15 @@ namespace SummerPracticeProject.DAL
                 Users ChosenUser = null;
                 while (reader.Read())
                 {
-                    ChosenUser = new Users(){
-                       Id = (int)reader["Id"],
-                       Name = reader["Name"] as string
-                       };
+                    ChosenUser = new Users()
+                    {
+                        Id = (int)reader["Id"],
+                        Name = reader["Name"] as string
+                    };
                 }
                 return ChosenUser;
             }
         }
-
 
         public Users GetByLogin(string login)
         {
@@ -97,7 +87,7 @@ namespace SummerPracticeProject.DAL
                 while (reader.Read())
                 {
                     ChosenUser = new Users()
-                    { 
+                    {
                         Id = (int)reader["Id"],
                         Name = reader["Name"] as string,
                         Surname = reader["Surname"] as string,
@@ -108,7 +98,5 @@ namespace SummerPracticeProject.DAL
                 return ChosenUser;
             }
         }
-
-
     }
 }

@@ -1,4 +1,6 @@
 ﻿@{
+    /**/
+
     Layout = "/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
@@ -12,26 +14,25 @@
 <body>
     <div>
         <header>
-          
-            <a href="~/Views/Shops/GetAllShops.cshtml" class="menu-element">Shops</a>
-            <a href="~/Views/Rates/GetAllRates.cshtml" class="menu-element">Rates</a>
+            @Html.ActionLink("All shops", "Index", "Shop")
+            @Html.ActionLink("Rates", "Index", "Rate")
             @if (User.Identity.IsAuthenticated)
             {
-                <a href="~/Views/User/LogOut.cshtml" class="menu-element">Logout</a>
-                <a href="~/Views/User/UserPage.cshtml" class="menu-element">@User.Identity.Name </a>
-                <a href="~/Views/Shops/Search.cshtml" class="menu-element">Search</a>
+                <p>
+                @User.Identity.Name</p>
+                
 
-                <a href="~/Views/Shops/AddShop.cshtml" class="menu-element">Add Shop</a>
+                @Html.ActionLink("Log Out", "Log Out", "User")
+
+                @Html.ActionLink("Search", "Search", "Shop")
+                @Html.ActionLink("Add Shop", "Add", "Shop")
             }
             else
             {
-                <a href="~/Views/User/SignIn.cshtml" class="menu-element">Sign in</a>
-                <a href="~/Views/User/SignUp.cshtml" class="menu-element">Sign Up</a>
+                @Html.ActionLink("SignIn", "SignIn", "User")
+                @Html.ActionLink("SignUp", "SignUp", "User")
             }
         </header>
-
-
-    
     </div>
 </body>
 </html>

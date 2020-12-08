@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SummerPracticeProject.MVC.Model.ShopVM>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ShopName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShopName)
+        </td>
+    </tr>
+}
+</table>
+@Html.ActionLink("Back To List", "Menu", "Menu")

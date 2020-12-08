@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SummerPracticeProject.Dao.Interfaces;
+﻿using SummerPracticeProject.Dao.Interfaces;
 using SummerPracticeProject.Entities;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -23,6 +19,7 @@ namespace SummerPracticeProject.DAL
                 command.ExecuteNonQuery();
             }
         }
+
         public void Remove(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -49,9 +46,10 @@ namespace SummerPracticeProject.DAL
                 {
                     ChosenShop = new Shops
 
-                    {  Id = (int)reader["Id"],
-                       Name = reader["Name"] as string,
-                       Address = reader["Address"] as string
+                    {
+                        Id = (int)reader["Id"],
+                        Name = reader["Name"] as string,
+                        Address = reader["Address"] as string
                     };
                 }
                 return ChosenShop;
@@ -79,7 +77,6 @@ namespace SummerPracticeProject.DAL
                 }
                 return shops;
             }
-
         }
 
         public IEnumerable<string> SelectShopsByRate(int rate)

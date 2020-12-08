@@ -1,0 +1,48 @@
+﻿@model IEnumerable<SummerPracticeProject.Entities.Rates>
+@using SummerPracticeProject.BLL.Interfaces
+
+@{
+    ViewBag.Title = "Index";
+    var _shopLogic = DependencyResolver.Current.GetService<IShopsLogic>();
+}
+
+<h2>All Rates</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdShop)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RateBy)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @_shopLogic.GetById(item.IdShop).Name
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RateBy)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

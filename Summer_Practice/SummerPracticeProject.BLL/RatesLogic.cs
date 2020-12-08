@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SummerPracticeProject.Entities;
-using SummerPracticeProject.BLL.Interfaces;
+﻿using SummerPracticeProject.BLL.Interfaces;
 using SummerPracticeProject.DAL;
 using SummerPracticeProject.Dao.Interfaces;
+using SummerPracticeProject.Entities;
+using System.Collections.Generic;
 
 namespace SummerPracticeProject.BLL
 {
-    public class RatesLogic:IRatesLogic
+    public class RatesLogic : IRatesLogic
     {
         private IRatesDao _ratesDao;
-        public  RatesLogic(IRatesDao ratesDao)
+
+        public RatesLogic(IRatesDao ratesDao)
         {
             _ratesDao = new RatesDAO();
         }

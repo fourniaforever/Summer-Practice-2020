@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SummerPracticeProject.Entities.Shops>
+
+@{
+    ViewBag.Title = "All Shops";
+}
+
+@using (Html.BeginForm("Search", "Shop", FormMethod.Get))
+{
+    <div class="form-group">
+        <div class="col-md-10">
+            <label> Search name</label>
+            <input type="text" class="form-control" name="rate" />
+        </div>
+    </div>
+    <div>
+        <div>
+            <input type="submit" value="Search" class="btn btn-default" />
+        </div>
+    </div>
+}
+<hr>
+<h2>All Shops</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+        </tr>
+    }
+</table>
+
+@Html.ActionLink("Back to Menu", "Menu", "Menu");

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SummerPracticeProject.Dao.Interfaces;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Data;
-using SummerPracticeProject.Entities;
 
 namespace SummerPracticeProject.DAL
 {
@@ -14,7 +7,7 @@ namespace SummerPracticeProject.DAL
     {
         protected string _connectionString = @"Data Source=MSI\SQLEXPRESS;Initial Catalog=ShopsRates;Integrated Security=True";
 
-        public SqlParameter GetSqlParameter(string nameofparameter,object value,DbType type)
+        public SqlParameter GetSqlParameter(string nameofparameter, object value, DbType type)
         {
             return new SqlParameter()
             {
@@ -25,7 +18,7 @@ namespace SummerPracticeProject.DAL
             };
         }
 
-        public SqlCommand GetSqlCommand(SqlConnection connection,string command)
+        public SqlCommand GetSqlCommand(SqlConnection connection, string command)
         {
             SqlCommand sqlCommand = connection.CreateCommand();
             sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -33,7 +26,7 @@ namespace SummerPracticeProject.DAL
             return sqlCommand;
         }
 
-        public void AddSqlParameter(SqlParameter parameter,SqlCommand command)
+        public void AddSqlParameter(SqlParameter parameter, SqlCommand command)
         {
             command.Parameters.Add(parameter);
         }

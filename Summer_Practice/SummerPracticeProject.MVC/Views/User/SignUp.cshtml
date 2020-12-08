@@ -1,11 +1,10 @@
-﻿
-@model SummerPracticeProject.Entities.Users
+﻿@model SummerPracticeProject.Entities.Users
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h3>Sign Up</h3>
 <br />
-@using (Html.BeginForm())
+@using (Html.BeginForm("SignUp", "User", FormMethod.Post))
 {
     @Html.ValidationSummary(true)
     <p>@Html.ValidationMessageFor(m => m.Name)</p>

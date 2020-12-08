@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
-using SummerPracticeProject.Entities;
-using SummerPracticeProject.BLL.Interfaces;
+﻿using SummerPracticeProject.BLL.Interfaces;
 using SummerPracticeProject.DAL;
 using SummerPracticeProject.Dao.Interfaces;
-
+using SummerPracticeProject.Entities;
 
 namespace SummerPracticeProject.BLL
 {
-    public class UsersLogic:IUsersLogic
+    public class UsersLogic : IUsersLogic
     {
         private IUsersDao _usersDao;
+
         public UsersLogic(IUsersDao usersDao)
         {
             _usersDao = new UsersDAO();

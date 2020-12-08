@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ninject.Modules;
 using SummerPracticeProject.BLL;
+using SummerPracticeProject.BLL.Interfaces;
 using SummerPracticeProject.DAL;
 using SummerPracticeProject.Dao.Interfaces;
-using SummerPracticeProject.Entities;
-using SummerPracticeProject.BLL.Interfaces;
-using Ninject.Modules;
 
 namespace SummerPracticeProject.Ioc
 {
-    public class NinjectBindings :NinjectModule
+    public class NinjectBindings : NinjectModule
     {
         public override void Load()
         {
-            Bind<IUsersDao>().To<UsersDAO>();
-            Bind<IShopsDao>().To<ShopsDAO>();
-            Bind<IRatesDao>().To<RatesDAO>();
+            Bind<IShopsLogic>().To<ShopsLogic>().InSingletonScope();
+            Bind<IUsersLogic>().To<UsersLogic>().InSingletonScope();
+            Bind<IRatesLogic>().To<RatesLogic>().InSingletonScope();
+
+            Bind<IUsersDao>().To<UsersDAO>().InSingletonScope();
+            Bind<IShopsDao>().To<ShopsDAO>().InSingletonScope();
+            Bind<IRatesDao>().To<RatesDAO>().InSingletonScope();
         }
     }
 }

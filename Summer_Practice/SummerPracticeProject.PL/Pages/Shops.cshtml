@@ -17,8 +17,7 @@
     {
     <div class="shop-row">
         <div class="text-out">@item.Name @item.Address</div>
- 
-        
+
         @if (User.Identity.IsAuthenticated)
         {
             <form action="~/Pages/RatesLogic/RateSet.cshtml" method="post" enctype="multipart/form-data">
@@ -34,14 +33,12 @@
                     <option value="5">Five Stars</option>
                 </select>
             </form>
-           
 
         }
         else
         {
             <p class="text-out">Sign in to Rate</p>
         }
-
     </div>
     }
 </body>

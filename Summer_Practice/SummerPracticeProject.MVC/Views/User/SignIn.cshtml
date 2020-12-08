@@ -6,7 +6,7 @@
 
 <link href="~/Styles/Styles.css" rel="stylesheet" />
 <br />
-@using (Html.BeginForm())
+@using (Html.BeginForm("SignIn", "User", FormMethod.Post))
 {
     @Html.ValidationSummary(true);
     <p>@Html.ValidationMessageFor(m => m.Login)</p>

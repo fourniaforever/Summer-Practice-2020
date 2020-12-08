@@ -31,11 +31,9 @@
             if (string.IsNullOrEmpty(Request["Name"]) &&
                 string.IsNullOrEmpty(Request["Address"]))
 
-
             {
                 string _name = Request["Name"];
                 string _address = Request["Address"];
-
 
                 _shopLogic.Add(new Shops()
                 {

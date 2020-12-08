@@ -1,16 +1,13 @@
-﻿using System;
-using System.Data.SqlClient;
-using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SummerPracticeProject.Dao.Interfaces;
+﻿using SummerPracticeProject.Dao.Interfaces;
 using SummerPracticeProject.Entities;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace SummerPracticeProject.DAL
 {
-    public class RatesDAO: TemplateDAO,IRatesDao
+    public class RatesDAO : TemplateDAO, IRatesDao
     {
         public void Add(Rates r)
         {
@@ -25,6 +22,7 @@ namespace SummerPracticeProject.DAL
                 var reader = command.ExecuteReader();
             }
         }
+
         public void Remove(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -48,14 +46,14 @@ namespace SummerPracticeProject.DAL
                 Rates ChosenRate = null;
                 while (reader.Read())
                 {
-                     ChosenRate = new Rates
-                     {
+                    ChosenRate = new Rates
+                    {
                         Id = (int)reader["Id"],
                         IdShop = (int)reader["IdShop"],
                         Date = (DateTime)reader["Date"],
                         Rate = (int)reader["Rate"],
                         RateBy = (int)reader["RateBy"]
-                     };
+                    };
                 }
                 return ChosenRate;
             }
@@ -75,16 +73,17 @@ namespace SummerPracticeProject.DAL
                 {
                     ChosenRate = new Rates
                     {
-                       Id = (int)reader["Id"],
-                       IdShop = (int)reader["IdShop"],
-                       Date = (DateTime)reader["Date"],
-                       Rate = (int)reader["Rate"],
-                       RateBy = (int)reader["RateBy"]
+                        Id = (int)reader["Id"],
+                        IdShop = (int)reader["IdShop"],
+                        Date = (DateTime)reader["Date"],
+                        Rate = (int)reader["Rate"],
+                        RateBy = (int)reader["RateBy"]
                     };
                 }
                 return ChosenRate;
             }
         }
+
         public Rates GetByShopId(int id)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -135,7 +134,6 @@ namespace SummerPracticeProject.DAL
                 }
                 return rates;
             }
-
         }
     }
 }

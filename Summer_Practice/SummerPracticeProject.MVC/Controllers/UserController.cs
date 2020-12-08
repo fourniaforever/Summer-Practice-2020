@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using SummerPracticeProject.BLL.Interfaces;
 using SummerPracticeProject.Entities;
-using SummerPracticeProject.BLL;
-using SummerPracticeProject.BLL.Interfaces;
+using System.Web.Mvc;
+using System.Web.Security;
 
 namespace SummerPracticeProject.MVC.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUsersLogic userLogic;
-
-
-        public UserController()
-        {
-
-        }
+        private IUsersLogic userLogic;
 
         public UserController(IUsersLogic user)
         {
@@ -62,25 +52,37 @@ namespace SummerPracticeProject.MVC.Controllers
             if (ModelState.IsValidField("Login") && ModelState.IsValidField("Password")
                && !userLogic.Authentication(user))
             {
-
                 ModelState.AddModelError("Login", "User does not exist.");
                 ModelState.AddModelError("Password", "User does not exist.");
             }
             if (ModelState.IsValidField("Login") && ModelState.IsValidField("Password"))
             {
                 Users _user = userLogic.GetByLogin(user.Login);
-                TempData["Id"] = _user.Id;
-                TempData["Name"] = _user.Name;
-                TempData["Surname"] = _user.Surname;
-                TempData["Login"] = user.Login;
-                TempData["Password"] = user.Password;
-                TempData["City"] = _user.City;
-                return RedirectToAction("GetModels", "");
+                //TempData["Id"] = _user.Id;
+                //TempData["Name"] = _user.Name;
+                //TempData["Surname"] = _user.Surname;
+                //TempData["Login"] = user.Login;
+                //TempData["Password"] = user.Password;
+                //TempData["City"] = _user.City;
+                FormsAuthentication.SetAuthCookie(_user.Name, true);
+                return RedirectToAction("Menu", "Menu");
             }
             else
             {
                 return View();
             }
+        }
+
+        [HttpGet]
+        public ActionResult RegistrationFailed()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult RegistrationSuccess()
+        {
+            return View();
         }
 
         //[HttpGet]
@@ -94,6 +96,5 @@ namespace SummerPracticeProject.MVC.Controllers
         //{
         //    return View();
         //}
-
     }
 }
